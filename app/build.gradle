@@ -20,14 +20,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+	dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-    def lifecycle_version = "2.0.0"
-    def room_version = "2.1.0" // 2.1.0 for latest stable version
+    
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+	def lifecycle_version = "2.0.0"
+    def room_version = "2.1.0" // 2.1.0 for latest stable version
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'com.google.android.material:material:1.0.0-rc01'
@@ -55,6 +60,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     // For Kotlin use kapt instead of annotationProcessor
 
+	
+	
     //Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'

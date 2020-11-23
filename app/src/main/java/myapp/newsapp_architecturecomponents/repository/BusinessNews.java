@@ -14,6 +14,8 @@ public class BusinessNews implements Parcelable {
     private int id;
 
     //SerializedName annotation is used for GSON and Retrofit object conversion
+	//There is no need to use setter methods since Retrofit will automatically map the corresponding named JSON objects
+	//To the variables named below
     @SerializedName("article_title")
     private String article_title;
 

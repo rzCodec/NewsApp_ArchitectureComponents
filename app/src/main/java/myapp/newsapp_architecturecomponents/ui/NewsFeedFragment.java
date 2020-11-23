@@ -3,19 +3,18 @@ package myapp.newsapp_architecturecomponents.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.lifecycle.LiveData;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import myapp.newsapp_architecturecomponents.R;
 import myapp.newsapp_architecturecomponents.repository.BusinessNews;
 import myapp.newsapp_architecturecomponents.view_model.NewsFeed_ViewModel;
@@ -50,44 +49,31 @@ public class NewsFeedFragment extends Fragment {
         }, view.getContext());
         recyclerView.setAdapter(customAdapter);
 		newsFeed_viewModel = ViewModelProviders.of(this).get(NewsFeed_ViewModel.class);
-		
-	    FloatingActionButton fab = view.findViewById(R.id.fab_getNews);
-		fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-           		newsFeed_viewModel.makeNetworkCall();
-					final LiveData<List<BusinessNews>> liveNewsList = newsFeed_viewModel.getBusinessNewsItems();
-		liveNewsList.observe(NewsFeedFragment.this, new Observer<List<BusinessNews>>() {
-            @Override
-            public void onChanged(List<BusinessNews> businessNews) {
-                //Enable progress bar
-              
-                //Update the UI by passing in the business news list which is obtained from the RESTful API
-                //And makes use of a Retrofit client
-                //Inside the custom adapter class, there is a method to set the notes and then update /refresh the UI
-                customAdapter.refreshItems(businessNews);
-                liveNewsList.removeObserver(this);
-            }
-        });
-            }
-        });
-		
-		
+				
         //TODO Don't forget to add internet permissions in the manifest file since this app will make API calls
 		//LiveData has the method "observe()" meaning the live data now observes any changes after the API call is made
         
-		newsFeed_viewModel.makeNetworkCall();
+		FloatingActionButton fab = view.findViewById(R.id.fab_Makenetworkcall);
+		fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+	            newsFeed_viewModel.getNews();
+				//Progress bar enabled
+			}
+		});
+		
+		newsFeed_viewModel.getNews();
 		final LiveData<List<BusinessNews>> liveNewsList = newsFeed_viewModel.getBusinessNewsItems();
 		liveNewsList.observe(this, new Observer<List<BusinessNews>>() {
             @Override
             public void onChanged(List<BusinessNews> businessNews) {
-                //Enable progress bar
-              
                 //Update the UI by passing in the business news list which is obtained from the RESTful API
+				//When the method getNews is invoked, a mutable live data variable is changed
+				//Then the observers get notified of the change
                 //And makes use of a Retrofit client
                 //Inside the custom adapter class, there is a method to set the notes and then update /refresh the UI
                 customAdapter.setItems(businessNews);
-                liveNewsList.removeObserver(this);
+				//Progress bar disabled
             }
         });
 		

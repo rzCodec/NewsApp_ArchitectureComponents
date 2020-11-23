@@ -8,7 +8,12 @@ import android.graphics.BitmapFactory;
 import java.io.*;
 
 public class ImageHandler {
-
+	/**
+	 * Context is the context of the activity
+	 * Bitmap is the bitmap data of the image
+	 * The filename as a string in .png or other image extensions.
+	 * Returns a string which is the file path to the image which is stored on the device. A file path is like the address of an image.
+	*/
     public String saveToInternalStorage(Bitmap bitmapImage, Context context, String filename) {
         ContextWrapper cw = new ContextWrapper(context);
         // path to /data/data/yourapp/app_data/imageDir

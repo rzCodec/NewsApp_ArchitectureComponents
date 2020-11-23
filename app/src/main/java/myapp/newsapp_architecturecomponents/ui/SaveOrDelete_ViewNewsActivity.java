@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.webkit.WebView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -61,8 +62,14 @@ public class SaveOrDelete_ViewNewsActivity extends AppCompatActivity {
             imageView.setImageBitmap(imageHandler.loadImageFromStorage(businessNewsItem.getFile_path(), businessNewsItem.getArticle_imagefilename()));
         }
 
-        textView_ViewArticleContent.setText(businessNewsItem.getArticle_content() + "\n");
-        getSupportActionBar().setTitle(businessNewsItem.getArticle_title());
+        textView_ViewArticleContent.setText(businessNewsItem.getArticle_content().replaceAll("\\s+$", "") + "\n");
+		//String text;
+		//text = "<html><body><p align=\"justify\">";
+		//text += businessNewsItem.getArticle_content();
+		//text += "</p></body></html>";
+		//textView_ViewArticleContent.loadData("<p style=\"text-align: justify\">"+ businessNewsItem.getArticle_content() + "</p>", "text/html", "UTF-8");
+        
+		getSupportActionBar().setTitle(businessNewsItem.getArticle_title());
 
         final NewsHistory_ViewModel newsHistory_viewModel =
                 ViewModelProviders.of(this).get(NewsHistory_ViewModel.class);
@@ -77,10 +84,10 @@ public class SaveOrDelete_ViewNewsActivity extends AppCompatActivity {
                     // When saving the news article, ensure it knows it resides in the Room Database
                     bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                     fileName = businessNewsItem.getArticle_title() + ".png";
-                    businessNewsItem.setArticle_imagefilename(fileName); //Save the filename to the database
+                    // Set the file path and file name of the business news article item...
+					businessNewsItem.setArticle_imagefilename(fileName); 
                     String filepath = imageHandler.saveToInternalStorage(bitmap, SaveOrDelete_ViewNewsActivity.this, fileName);
                     businessNewsItem.setFile_path(filepath);
-					// Set the file path and file name of the business news article item
 					// THEN, save it to the database
 					newsHistory_viewModel.insert(businessNewsItem);
 				} else {

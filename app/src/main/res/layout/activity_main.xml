@@ -14,7 +14,12 @@
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+				android:background="@color/colorPrimary"
+				app:tabIndicatorColor="@color/colorAccent"
+				app:tabSelectedTextColor="@color/colorWhite"
+                app:tabTextColor="@color/colorWhite">
+				
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
