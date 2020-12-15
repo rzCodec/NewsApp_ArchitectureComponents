@@ -62,7 +62,8 @@ public class SaveOrDelete_ViewNewsActivity extends AppCompatActivity {
             imageView.setImageBitmap(imageHandler.loadImageFromStorage(businessNewsItem.getFile_path(), businessNewsItem.getArticle_imagefilename()));
         }
 
-        textView_ViewArticleContent.setText(businessNewsItem.getArticle_content().replaceAll("\\s+$", "") + "\n");
+		//businessNewsItem.getArticle_content().replaceAll("\\s+$", "") + "\n"
+        textView_ViewArticleContent.setText(businessNewsItem.getArticle_content().trim() + "\n");
 		//String text;
 		//text = "<html><body><p align=\"justify\">";
 		//text += businessNewsItem.getArticle_content();

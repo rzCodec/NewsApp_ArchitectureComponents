@@ -52,8 +52,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         BusinessNews item = items.get(position);
-        holder.mTextView_ArticleTitle.setText(item.getArticle_title());
-        holder.mTextView_ArticleDate.setText(item.getArticle_date());
+        holder.mTextView_ArticleTitle.setText(item.getArticle_title().trim());
+        holder.mTextView_ArticleDate.setText(item.getArticle_date().trim());
+		int iContentLength = item.getArticle_content().length();
+		if(iContentLength >= 100) {
+			 holder.mTextView_ArticleContent.setText(item.getArticle_content().substring(0, 100).trim() + "...");
+		} 
+		else {
+			 holder.mTextView_ArticleContent.setText(item.getArticle_content().substring(0, iContentLength).trim() + "...");
+		}
+       
         if(item.getSaved() == true) {
             //If the article is from the database, we want to load the image from the internal storage
             holder.mImageView.setImageBitmap(new ImageHandler().loadImageFromStorage(item.getFile_path(), item.getArticle_imagefilename()));
@@ -93,6 +101,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView mTextView_ArticleTitle;
         private TextView mTextView_ArticleDate;
+        private TextView mTextView_ArticleContent;
         private ImageView mImageView;
         private Button mButton_ViewNews;
 
@@ -100,6 +109,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             super(v);
             mTextView_ArticleTitle = v.findViewById(R.id.textview_article_title);
             mTextView_ArticleDate = v.findViewById(R.id.textview_article_date);
+            mTextView_ArticleContent = v.findViewById(R.id.textview_article_content);
             mImageView = v.findViewById(R.id.imageView_article_image);
             mButton_ViewNews = v.findViewById(R.id.material_button_OpenArticle);
             mButton_ViewNews.setOnClickListener(new View.OnClickListener() {

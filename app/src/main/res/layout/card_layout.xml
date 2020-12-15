@@ -14,21 +14,89 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
+		
+		
+        <ImageView
+            android:id="@+id/imageView_article_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="Display images"
+			android:layout_marginTop="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_article_title"
+			tools:srcCompat="@tools:sample/avatars" />
+			
+			<!-- original xml code
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" -->
+			
+			
+           
+			
+		<TextView
+            android:id="@+id/textview_article_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+			android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="left"
+            android:text="This is a sample title."
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+			
+			app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+			
+			<!-- original xml code
+			
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_article_image"--> 
+			
+			
+			  <!--  android:layout_marginStart="8dp"
+			  android:textAppearance="@style/TextAppearance.AppCompat.Large"
+			  android:text="@string/article_title"-->
 
         <TextView
             android:id="@+id/textview_article_date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:maxEms="12"
+            android:layout_height="0dp"
+			android:paddingLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:gravity="left"
+            android:maxEms="12"
             android:text="@string/article_date"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_article_image"/>
+			
+			<!-- original code app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_article_title" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_article_title" -->
+        <TextView
+            android:id="@+id/textview_article_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:paddingLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="left"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_article_date" />
 
         <Button
             android:id="@+id/material_button_OpenArticle"
@@ -36,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textview_article_title"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/open_article"
@@ -44,36 +112,14 @@
             app:backgroundTint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_article_image" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_article_content"
+            app:layout_constraintVertical_bias="0.2" />
 
-        <ImageView
-            android:id="@+id/imageView_article_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="Display images"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_article_date"
-            tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/textview_article_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/article_title"
-            android:gravity="center_horizontal"
-            android:maxEms="12"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+      
+
         <!--
 
                 <TextView
