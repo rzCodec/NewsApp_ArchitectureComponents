@@ -7,16 +7,14 @@ import com.google.android.material.tabs.TabLayout;
 import myapp.newsapp_architecturecomponents.R;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-		setTitle("Financial & Business News");
+	setTitle("Financial & Business News");
         //Get the viewpager and instantiate the pager adapter
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        FragmentPager fragmentPager =
-                new FragmentPager(getSupportFragmentManager(), "Newsfeed", "History");
+        FragmentPager fragmentPager = new FragmentPager(getSupportFragmentManager(), "Newsfeed", "History");
         //Set the viewpager to the pager adapter
         viewPager.setAdapter(fragmentPager);
         //Get the tab layout and then set it with the viewpager
