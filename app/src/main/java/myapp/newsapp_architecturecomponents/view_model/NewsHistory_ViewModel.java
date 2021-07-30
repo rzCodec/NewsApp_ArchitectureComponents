@@ -20,8 +20,7 @@ public class NewsHistory_ViewModel extends AndroidViewModel {
     public NewsHistory_ViewModel(@NonNull Application application) {
         super(application);
         newsDatabase_repository = new NewsDatabase_Repository(application);
-		
-		//Retrieve the database news and get it ready to be returned and displayed in a RecyclerView and CardView
+	//Retrieve the news from the db repo and get it ready to be returned and displayed in a RecyclerView and CardView
         this.database_newsItems = newsDatabase_repository.getDatabase_newsItems();
     }
 
