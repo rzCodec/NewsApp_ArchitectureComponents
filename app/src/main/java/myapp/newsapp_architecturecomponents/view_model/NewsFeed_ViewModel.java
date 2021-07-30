@@ -12,22 +12,17 @@ import java.util.List;
  */
 public class NewsFeed_ViewModel extends ViewModel {
     private Api_repository api_repo = new Api_repository();
-	private LiveData<List<BusinessNews>> news;
+    private LiveData<List<BusinessNews>> news;
    
-	//private MutableLiveData<List<BusinessNews>> articles;
-
-	
     public NewsFeed_ViewModel() { 
 		//articles = new MutableLiveData<>();
         //news = api_repository.getArticleContent();
     }
-
 	/*
     private MutableLiveData<List<BusinessNews>> articles;
     private api_service mRestful_API;
     private Call<List<BusinessNews>> mRequestCall;
 
-	
     public NewsFeed_ViewModel() {
         mRestful_API = RetrofitClient.getRetrofitInstance().create(api_service.class);
         mRequestCall = mRestful_API.get_article_content();
@@ -55,11 +50,11 @@ public class NewsFeed_ViewModel extends ViewModel {
             }
         });
         //return articles;
+    }*/
+    
+    public void getNews(){
+	api_repo.getArticleContent();
     }
-	*/
-	public void getNews(){
-		api_repo.getArticleContent();
-	}
 
     public LiveData<List<BusinessNews>> getBusinessNewsItems() {
         //return news;
