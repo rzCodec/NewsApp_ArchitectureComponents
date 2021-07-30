@@ -1,6 +1,4 @@
 package myapp.newsapp_architecturecomponents.ui;
-
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -27,7 +25,6 @@ public class FragmentPager extends FragmentPagerAdapter {
             this.arrTitles[0] = "Default One";
             this.arrTitles[1] = "Default Two";
         }
-
     }
 
     @Override
