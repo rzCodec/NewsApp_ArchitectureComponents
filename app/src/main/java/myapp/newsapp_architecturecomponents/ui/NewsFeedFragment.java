@@ -1,6 +1,4 @@
 package myapp.newsapp_architecturecomponents.ui;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +20,6 @@ import myapp.newsapp_architecturecomponents.view_model.NewsFeed_ViewModel;
 import java.util.List;
 
 public class NewsFeedFragment extends Fragment {
-
     private NewsFeed_ViewModel newsFeed_viewModel;
     private View view;
 
@@ -33,10 +30,12 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+	    
         view = inflater.inflate(R.layout.fragment_news_feed, container, false);	
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        //TODO Create and set the adapter
+	    
+        //Create and set the adapter
         final CustomAdapter customAdapter = new CustomAdapter(new CustomAdapter.iCallback() {
             @Override
             public void returnBusinessNewsItem(BusinessNews businessNews, int position) {
@@ -47,49 +46,36 @@ public class NewsFeedFragment extends Fragment {
                 startActivity(intent);
             }
         }, view.getContext());
+	    
         recyclerView.setAdapter(customAdapter);
-		newsFeed_viewModel = ViewModelProviders.of(this).get(NewsFeed_ViewModel.class);
-				
-        //TODO Don't forget to add internet permissions in the manifest file since this app will make API calls
-		//LiveData has the method "observe()" meaning the live data now observes any changes after the API call is made
-        
-		FloatingActionButton fab = view.findViewById(R.id.fab_Makenetworkcall);
-		fab.setOnClickListener(new View.OnClickListener() {
+	newsFeed_viewModel = ViewModelProviders.of(this).get(NewsFeed_ViewModel.class);
+	FloatingActionButton fab = view.findViewById(R.id.fab_Makenetworkcall);
+	
+	fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 	            newsFeed_viewModel.getNews();
-				//Progress bar enabled
-			}
-		});
+	    }
+	});
 		
-		newsFeed_viewModel.getNews();
-		final LiveData<List<BusinessNews>> liveNewsList = newsFeed_viewModel.getBusinessNewsItems();
-		liveNewsList.observe(this, new Observer<List<BusinessNews>>() {
+	newsFeed_viewModel.getNews();
+	final LiveData<List<BusinessNews>> liveNewsList = newsFeed_viewModel.getBusinessNewsItems();
+	liveNewsList.observe(this, new Observer<List<BusinessNews>>() {
             @Override
             public void onChanged(List<BusinessNews> businessNews) {
                 //Update the UI by passing in the business news list which is obtained from the RESTful API
-				//When the method getNews is invoked, a mutable live data variable is changed
-				//Then the observers get notified of the change
+	  	//When the method getNews is invoked, a mutable live data variable is changed
+		//Then the observers get notified of the change
                 //And makes use of a Retrofit client
                 //Inside the custom adapter class, there is a method to set the notes and then update /refresh the UI
-                customAdapter.setItems(businessNews);
-				//Progress bar disabled
+                customAdapter.setItems(businessNews);			
             }
-        });
-		
+        });	
         return view;
-    }//end of conCreateView
-	
-	private void retrieveNews(CustomAdapter customAdapter) {
-       	
-	}
+    } //end of conCreateView
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
-
-
-
 }
