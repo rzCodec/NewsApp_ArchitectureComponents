@@ -10,5 +10,6 @@ Technologies that I have learned from creating this app.
 * SQL Queries with ROOM Database
 * LiveData and ViewModels which separate business logic from the UI.
 
-![BusinessApp](https://user-images.githubusercontent.com/25613143/128639517-590022a3-ca82-4b78-8626-0a563f0daa39.png)
+<img src="![BusinessApp](https://user-images.githubusercontent.com/25613143/128639517-590022a3-ca82-4b78-8626-0a563f0daa39.png)" width="48">
+
 
