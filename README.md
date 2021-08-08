@@ -9,9 +9,7 @@ Technologies that I have learned from creating this app.
 * Node.js Express RESTful API connecting to MongoDB Cloud Atlas Storage
 * Retrofit which connects to the RESTful API to retrieve data. 
 * Designing a modern UI with Android Libraries such as Card and Recycler View while following Material Design guidelines.
-* SQL Queries with ROOM Database for data storage.
-
-
+* ROOM Database to store news articles on the app.
 
 
 <img src="https://user-images.githubusercontent.com/25613143/128639517-590022a3-ca82-4b78-8626-0a563f0daa39.png" width="288">
