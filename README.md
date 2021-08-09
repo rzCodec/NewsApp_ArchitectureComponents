@@ -6,7 +6,7 @@ The user can save and view these news articles for later references or delete th
 Technologies that I have learned from creating this app.
 
 * LiveData, ViewModels with MVVM Project Structure which separate business logic from the UI, making development modular, scalable and easier to locate bugs.
-* Node.js Express RESTful API connecting to MongoDB Cloud Atlas Storage
+* Node.js Express RESTful API connecting to MongoDB Cloud Atlas Storage.
 * Retrofit which connects to the RESTful API to retrieve data. 
 * Designing a modern UI with Android Libraries such as Card and Recycler View while following Material Design guidelines.
 * ROOM Database to store news articles on the app.
