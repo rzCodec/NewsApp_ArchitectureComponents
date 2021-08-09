@@ -13,7 +13,7 @@ Technologies that I have learned from creating this app.
 
 <table style="width:120%">
   <tr>
-    <img src="https://user-images.githubusercontent.com/25613143/128639517-590022a3-ca82-4b78-8626-0a563f0daa39.png" width="288">
-    <img src="https://user-images.githubusercontent.com/25613143/128736266-0aba089e-e9c6-424c-b23a-397e4295b5d5.png" width="288">
+    <th><img src="https://user-images.githubusercontent.com/25613143/128639517-590022a3-ca82-4b78-8626-0a563f0daa39.png" width="288"></th>
+    <th><img src="https://user-images.githubusercontent.com/25613143/128736266-0aba089e-e9c6-424c-b23a-397e4295b5d5.png" width="288"></th> 
   </tr>
 </table>
