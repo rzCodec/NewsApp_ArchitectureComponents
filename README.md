@@ -3,7 +3,7 @@
 An Android app to view business and financial news.
 The user can save and view these news articles for later references or delete them. 
 
-Technologies that I have learned from creating this app.
+Skills that I have learned from creating this app.
 
 * LiveData, ViewModels with MVVM Project Structure which separate business logic from the UI, making development modular, scalable and easier to locate bugs.
 * Node.js Express RESTful API connecting to MongoDB Cloud Atlas Storage.
