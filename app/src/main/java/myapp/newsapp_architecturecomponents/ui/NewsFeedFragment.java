@@ -35,13 +35,10 @@ public class NewsFeedFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 	    
-        //Create and set the adapter
         final CustomAdapter customAdapter = new CustomAdapter(new CustomAdapter.iCallback() {
             @Override
             public void returnBusinessNewsItem(BusinessNews businessNews, int position) {
                 Intent intent = new Intent(getActivity(), SaveOrDelete_ViewNewsActivity.class);
-                //The user is for the first time viewing the news
-                //Therefore the only option is to save it.
                 intent.putExtra("TO_SAVE", businessNews);
                 startActivity(intent);
             }
@@ -63,16 +60,11 @@ public class NewsFeedFragment extends Fragment {
 	liveNewsList.observe(this, new Observer<List<BusinessNews>>() {
             @Override
             public void onChanged(List<BusinessNews> businessNews) {
-                //Update the UI by passing in the business news list which is obtained from the RESTful API
-	  	//When the method getNews is invoked, a mutable live data variable is changed
-		//Then the observers get notified of the change
-                //And makes use of a Retrofit client
-                //Inside the custom adapter class, there is a method to set the notes and then update /refresh the UI
                 customAdapter.setItems(businessNews);			
             }
         });	
         return view;
-    } //end of conCreateView
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
