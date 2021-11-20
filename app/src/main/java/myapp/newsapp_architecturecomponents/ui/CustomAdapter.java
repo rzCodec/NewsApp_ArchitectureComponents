@@ -27,7 +27,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public CustomAdapter(iCallback mCallback, Context context) {
         this.mCallback = mCallback;
         this.context = context;
-		this.items = new ArrayList<BusinessNews>(); 
+	this.items = new ArrayList<BusinessNews>(); 
     }
 
     public CustomAdapter(List<BusinessNews> items, Context context) {
@@ -36,10 +36,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                           int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_layout, parent, false);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout, parent, false);
         return new MyViewHolder(v);
     }
 
@@ -58,7 +56,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
        
         if(item.getSaved() == true) {
             holder.mImageView.setImageBitmap(new ImageHandler().loadImageFromStorage(item.getFile_path(), item.getArticle_imagefilename()));
-        } else Picasso.get().load("http:" + item.getArticle_image_link()).into(holder.mImageView);
+        } 
+	else Picasso.get().load("http:" + item.getArticle_image_link()).into(holder.mImageView);
     }
 
     @Override
