@@ -20,7 +20,7 @@ public abstract class AppDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "BusinessNews_Database")
                     .fallbackToDestructiveMigration()
-                    .addCallback(roomCallback) //This adds hard coded data when the database is created
+                    .addCallback(roomCallback)
                     .build();
         }
 
