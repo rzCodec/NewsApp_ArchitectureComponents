@@ -7,9 +7,6 @@ import myapp.newsapp_architecturecomponents.repository.web_repository.Api_reposi
 
 import java.util.List;
 
-/**
- * Class for the UI that the user views their news in real time
- */
 public class NewsFeed_ViewModel extends ViewModel {
     private Api_repository api_repo = new Api_repository();
     private LiveData<List<BusinessNews>> news;
