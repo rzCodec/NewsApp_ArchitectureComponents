@@ -41,24 +41,18 @@ public class NewsHistoryFragment extends Fragment {
             @Override
             public void returnBusinessNewsItem(BusinessNews businessNews, int position) {
                 Intent intent = new Intent(getActivity(), SaveOrDelete_ViewNewsActivity.class);
-                //The user is viewing news that was already saved
-                //Therefore the only option is to delete it
-				//We will then pass data back from the viewing activity, then delete the article in this fragment
                 intent.putExtra("TO_DELETE", businessNews);
                 intent.putExtra("POSITION", position);
-                //Position is an integer that determines which card was selected in the recycler view
                 startActivityForResult(intent, REQUEST_CODE);
             }
         }, view.getContext());
 
         recyclerView.setAdapter(customAdapter);
 
-        // TODO: Use the ViewModel
         mViewModel = ViewModelProviders.of(this).get(NewsHistory_ViewModel.class);
         mViewModel.getDatabaseBusinessNewsItems().observe(this, new Observer<List<BusinessNews>>() {
             @Override
             public void onChanged(List<BusinessNews> businessNews) {
-                //Show a progress dialog
                 customAdapter.setItems(businessNews);
             }
         });
