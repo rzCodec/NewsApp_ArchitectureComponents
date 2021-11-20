@@ -3,9 +3,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-/**
- * Created by User on 2017/09/16.
- */
 public class FragmentPager extends FragmentPagerAdapter {
 
     private String[] arrTitles;
