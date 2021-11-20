@@ -31,14 +31,9 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            //populateWithExistingData(instance);
         }
     };
 
-    /**
-     * Database operations must be performed on a background thread
-     * This adds some data so we can see what the app looks like
-     */
     private static void populateWithExistingData(AppDatabase appDatabase) {
         final BusinessNews_Dao dao = appDatabase.businessNews_dao();
         Needle.onBackgroundThread().execute(new Runnable() {
@@ -46,18 +41,18 @@ public abstract class AppDatabase extends RoomDatabase {
             public void run() {
                 dao.insert(new BusinessNews("Title 1",
                         "1st August 2019",
-                        "... some stuff",
-                        "fake link 1"));
+                        "Content",
+                        "URL"));
 
                 dao.insert(new BusinessNews("Title 2",
                         "18th June 2019",
-                        "Meh",
-                        "fake link 2"));
+                        "Cotent",
+                        "URL"));
 
                 dao.insert(new BusinessNews("Title 3",
                         "4th August 2019",
-                        "Random content #3",
-                        "fake link 3"));
+                        "Content",
+                        "URL"));
             }
         });
     }
