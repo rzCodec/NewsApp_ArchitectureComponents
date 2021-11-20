@@ -14,15 +14,12 @@ public interface BusinessNews_Dao {
     @Query("SELECT * FROM business_news_table")
     LiveData<List<BusinessNews>> getAll_BusinewssNewsItems();
 
-    //Save the current business news item
     @Insert
     void insert(BusinessNews newsItem);
-
-    //Delete only the current business news article
+    
     @Delete
     void delete(BusinessNews newsItem);
 
-    //Deletes all business news items
     @Query("DELETE FROM business_news_table")
     void deleteAllNews();
 }
