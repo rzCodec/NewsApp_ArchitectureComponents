@@ -12,12 +12,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 	setTitle("Financial & Business News");
-        //Get the viewpager and instantiate the pager adapter
+      
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         FragmentPager fragmentPager = new FragmentPager(getSupportFragmentManager(), "Newsfeed", "History");
-        //Set the viewpager to the pager adapter
+     
         viewPager.setAdapter(fragmentPager);
-        //Get the tab layout and then set it with the viewpager
+     
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
     }
