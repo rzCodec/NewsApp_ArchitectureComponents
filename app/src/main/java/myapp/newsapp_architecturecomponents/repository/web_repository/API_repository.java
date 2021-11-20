@@ -19,23 +19,14 @@ public class Api_repository {
         articles = new MutableLiveData<>();
     }
 
-    /**
-     * @return We use MutableLiveData because we want to access the live data by assigning it the response we get
-     * from the RESTful API
-     * Mutable means "to change", LiveData by default has no modifiers that allow it to be changed but using the
-     * keyword Mutable will do so.
-     */
     public MutableLiveData<List<BusinessNews>> getArticleContent() {
-		//Use the clone method to make multiple calls using the same parameters / method signature
-		//Because most Retrofit calls can only be used once
-		//The clone() method allows a network call to be used multiple times.
+	//The clone method is used to make multiple network calls instead of just a one-time network request.    
         mRequestCall.clone().enqueue(new Callback<List<BusinessNews>>() {
             @Override
             public void onResponse(Call<List<BusinessNews>> call, Response<List<BusinessNews>> response) {
                 if(response.isSuccessful()) {
-					articles.setValue(null); //To clean any data that might already exist from a prior network call
+		    articles.setValue(null);
                     articles.setValue(response.body());
-					//Think of it as passing the response body "out of this async code block" and treat it as synchronous code
                 }
             }
 
