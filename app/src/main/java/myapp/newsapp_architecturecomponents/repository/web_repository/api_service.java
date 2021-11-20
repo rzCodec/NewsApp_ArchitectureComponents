@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import java.util.List;
 
 public interface api_service {
-    @GET("/get_article_content") //This is part of the get request url
+    @GET("/get_article_content")
     Call<List<BusinessNews>> get_article_content();
 }
