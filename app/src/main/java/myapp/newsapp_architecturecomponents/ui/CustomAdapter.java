@@ -35,9 +35,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     }
 
-    /*
-     *Constructor to create the card
-     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
@@ -46,9 +43,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return new MyViewHolder(v);
     }
 
-    /*
-     *Method to handle displaying and showing of text views, etc
-     */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         BusinessNews item = items.get(position);
@@ -63,14 +57,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 		}
        
         if(item.getSaved() == true) {
-            //If the article is from the database, we want to load the image from the internal storage
             holder.mImageView.setImageBitmap(new ImageHandler().loadImageFromStorage(item.getFile_path(), item.getArticle_imagefilename()));
         } else Picasso.get().load("http:" + item.getArticle_image_link()).into(holder.mImageView);
     }
 
-    /*
-     *Method to return the size of the list of items
-     */
     @Override
     public int getItemCount() {
         if (items == null) {
@@ -79,10 +69,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         return items.size();
     }
 
-    /**
-     * Set the items then update the UI
-     * @param items
-     */
     public void setItems(List<BusinessNews> items) {
         this.items = items;
         notifyDataSetChanged();
@@ -97,7 +83,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 		setItems(items);
 	}
 
-    //Inner class to find the components on the XML file
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView mTextView_ArticleTitle;
         private TextView mTextView_ArticleDate;
@@ -122,4 +107,4 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             });
         }
     }
-}//end of class
+}
